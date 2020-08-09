@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+//namespace App\Http\Controllers\Auth;
 
 use App\Exception\ApiInvalidRequestData;
 use Illuminate\Support\Facades\Validator;
@@ -16,11 +17,11 @@ class TaskController extends Controller
      */
     public function index()
     {
-        $task = Task::all();
+        $tasks = Task::all();
 
         return response()->json([
-            'tasks'=>$task
-        ]);
+            'tasks'=>$tasks
+        ], 200);
     }
 
     /**
@@ -41,20 +42,20 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'name'=> 'required',
-            'body'=> 'required'
-        ]);
+       $request->validate([
+           'name'=> 'required',
+           'body'=> 'required'
+       ]);
+       $task = $request->user()->tasks()->create([
+           'name'=> $request->name,
+           'body'=>$request->body
+       ]);
 
-        $task = $request->user()->tasks()->create([
-            'name'=>$request->name,
-            'body'=>$request->body
-        ]);
-
-        return response()->json([
-            'task'=>$task,
-            'message'=>'task has been created!'
-        ]);
+       return response()->json([
+           'task'=>$task,
+           'message'=>"task has been created!"
+       ]);
+       
     }
 
     /**
@@ -65,9 +66,7 @@ class TaskController extends Controller
      */
     public function show(Task $task)
     {
-        return response()->json([
-            'task'=>$task
-        ]);
+        
     }
 
     /**
@@ -88,15 +87,17 @@ class TaskController extends Controller
      * @param  \App\Task  $task
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Task $task)
+    public function update(Request $request, $id)
     {
-        $data = $this->validateRequest($request, $task);
-
-        $task->update($data);
-
+        $request->validate([
+            'name'=> 'required',
+            'body'=> 'required'
+        ]);
+        $task = $request->user()->tasks()->whereId($id)->update($request->all());
+        
         return response()->json([
-            'tasks' => $task,
-            'status' => "Task has been updated"
+            'task'=>$task,
+            'message'=>"task has been updated!"
         ]);
     }
 
@@ -108,9 +109,10 @@ class TaskController extends Controller
      */
     public function destroy(Task $task)
     {
-        $tasks->delete();
+        $task->delete();
         return response()->json([
-            'tasks'=>$tasks,
-            'status'=>"Tasks has been deleted"]);
+            'task'=>$task,
+            'message'=>"task has been deleted!"
+        ]);
     }
 }
