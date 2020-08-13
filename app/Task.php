@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Task extends Model
 {
+
+    protected $table ="tasks";
     use SoftDeletes;
 
     protected $fillable=[

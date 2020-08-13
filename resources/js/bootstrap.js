@@ -34,12 +34,12 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     forceTLS: true
 // });
 
-let token = document.head.querySelector(meta[name="csrf-token"])
+//let token = document.head.querySelector(meta[name="csrf-token"])
 
-if (token) {
-    window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token
-} else {
-    console.error('CSRF token not found: https://laravel.com/docs')
-}
+//if (token) {
+//    window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token
+//} else {
+//    console.error('CSRF token not found: https://laravel.com/docs')
+//}
 
 window.toastr = require('toastr');
