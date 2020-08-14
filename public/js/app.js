@@ -2005,7 +2005,7 @@ __webpack_require__.r(__webpack_exports__);
         body: ''
       },
       tasks: [],
-      uri: 'http://localhost/nama_projectmu/public/tasks/'
+      uri: 'http://localhost/nama_projectmu/public/tasks'
     };
   },
   methods: {
@@ -38279,10 +38279,11 @@ var render = function() {
                     attrs: { type: "button" },
                     on: {
                       click: function($event) {
-                        return _vm.tasks.push({
+                        _vm.tasks.push({
                           name: _vm.task.name,
                           body: _vm.task.body
-                        })
+                        }),
+                          _vm.createTask
                       }
                     }
                   },

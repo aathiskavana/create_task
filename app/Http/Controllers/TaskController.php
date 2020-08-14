@@ -21,7 +21,7 @@ class TaskController extends Controller
 
         return response()->json([
             'tasks'=>$tasks
-        ], 200);
+        ]);
     }
 
     /**
@@ -42,17 +42,21 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
+
+        $task = Task::create($request->all());
+        return $task;
+        
        $request->validate([
            'name'=> 'required',
            'body'=> 'required'
        ]);
-       $task = $request->user()->tasks()->create([
+       $tasks = $request->user()->tasks()->create([
            'name'=> $request->name,
            'body'=>$request->body
        ]);
 
        return response()->json([
-           'task'=>$task,
+           'tasks'=>$tasks,
            'message'=>"task has been created!"
        ]);
        

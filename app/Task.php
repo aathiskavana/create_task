@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Task extends Model
 {
 
-    protected $table ="tasks";
+    //protected $table ="tasks";
     use SoftDeletes;
 
     protected $fillable=[
@@ -16,4 +16,8 @@ class Task extends Model
         'body',
         'user_id'
     ];
+
+    public function users(){
+        return $this->belongTo('App\User');
+    }
 }

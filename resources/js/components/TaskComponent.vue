@@ -45,7 +45,7 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         
-        <button @click="tasks.push({name: task.name, body: task.body})" type="button" class="btn btn-primary">Save changes</button>
+        <button @click="tasks.push({name: task.name, body: task.body}), createTask" type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>
@@ -66,7 +66,7 @@
                 },
 
                 tasks: [],
-                uri: 'http://localhost/nama_projectmu/public/tasks/'
+                uri: 'http://localhost/nama_projectmu/public/tasks'
             }
         },
 
@@ -76,13 +76,14 @@
                 $("#create-modal").modal("show");
             },
             
-            createTask(){
+            createTask(){ 
                 axios.post(this.uri, {name: this.task.name, body:this.task.body}).then(response=>{
                     this.tasks.push(response.data.task);
                     $("#create-modal").modal("hide");
                 }).catch(error=>{
                     console.log(error);
                 });
+  
             },
 
             loadTasks(){
