@@ -10,9 +10,15 @@
     "require": {
         "php": "^7.2.5",
         "fideloper/proxy": "^4.2",
+<<<<<<< HEAD
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^6.3",
         "laravel/framework": "^7.24",
+=======
+        "fruitcake/laravel-cors": "^1.0",
+        "guzzlehttp/guzzle": "^6.3",
+        "laravel/framework": "^7.0",
+>>>>>>> 3c8d9946949b730dc23f912c7ffd2698f6ad189e
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.1"
     },

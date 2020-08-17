@@ -13,9 +13,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 3c8d9946949b730dc23f912c7ffd2698f6ad189e
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
 
+<<<<<<< HEAD
 Route::resource('/tasks', 'TasksController');
+=======
+Route::resource('/tasks', 'TaskController');
+
+//Route::get('/tasks', function () {
+//	return view('task');
+//})->name('task');
+>>>>>>> 3c8d9946949b730dc23f912c7ffd2698f6ad189e

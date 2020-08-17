@@ -1,13 +1,17 @@
+<<<<<<< HEAD
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
 
+=======
+>>>>>>> 3c8d9946949b730dc23f912c7ffd2698f6ad189e
 require('./bootstrap');
 
 window.Vue = require('vue');
 
+<<<<<<< HEAD
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -36,3 +40,16 @@ const app = new Vue({
       },
    
 });
+=======
+Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component('task-component', require('./components/TaskComponent.vue').default);
+
+const app = new Vue({
+    el: '#app',
+    data: {
+        createTask: '',
+        tasks: [{text: ''}, {text: ''}]
+      }
+   
+});
+>>>>>>> 3c8d9946949b730dc23f912c7ffd2698f6ad189e

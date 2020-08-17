@@ -28,10 +28,13 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+<<<<<<< HEAD
     public function tasks(){
         return $this->hasMany(Task::class);
     }
 
+=======
+>>>>>>> 3c8d9946949b730dc23f912c7ffd2698f6ad189e
     /**
      * The attributes that should be cast to native types.
      *
@@ -40,4 +43,11 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+<<<<<<< HEAD
+=======
+
+    public function tasks(){
+        return $this->hasMany(Task::class);
+    }
+>>>>>>> 3c8d9946949b730dc23f912c7ffd2698f6ad189e
 }
